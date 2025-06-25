@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+langchain
+langgraph
+dvc
+anthropic
+python-dotenv
+rope
+bandit
+requests
+PyGithub
+
+[dev]
+pytest
+ruff
+black
+pre-commit
