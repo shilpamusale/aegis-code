@@ -1,8 +1,6 @@
-# import os
-
-# def my_func( x,y ):
-#     z=x+y
-#   print( "result is" ,z )
+def my_func(x, y):
+    z = x + y
+    print("result is", z)
 
 
-# unused_variable = 123
+unused_variable = 123
