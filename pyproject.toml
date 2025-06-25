@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aegis-code"
+version = "0.1.0"
+description = "A multi-agent system for code modernization and PR reviews."
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Shilpa Musale", email = "shilpa.musale02@gmail.com" }]
+requires-python = ">=3.9"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "langchain",
+    "langgraph",
+    "dvc",
+    "anthropic",
+    "python-dotenv",
+    "rope",
+    "bandit",
+    "requests",
+    "PyGithub"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+    "black",
+    "pre-commit",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
