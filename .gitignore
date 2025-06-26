@@ -132,3 +132,6 @@ cython_debug/
 
 # DVC cache
 .dvc/cache
+
+# DVC tracked data
+data/raw/
