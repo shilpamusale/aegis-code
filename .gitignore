@@ -133,5 +133,8 @@ cython_debug/
 # DVC cache
 .dvc/cache
 
-# DVC tracked data
-data/raw/
+# Ignore all contents of the raw data directory for DVC
+data/raw/*
+
+# But DO track the agent constitution file
+!data/raw/CLAUDE.md
