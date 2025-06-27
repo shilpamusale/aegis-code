@@ -1,0 +1,34 @@
+# Main configuration for the Aegis Code project
+
+# Default settings that can be overridden
+
+defaults:
+  - _self_
+
+#API Settings
+api:
+  host: "0.0.0.0"
+  port: 8080
+
+# LLM settings for our agents
+llm:
+  # Default model for all agents, can be overridden per agent
+  default_model: "claude-3-sonenr-20240229"
+  # Temperature setting contro;s the randomness of the output. 0.0 is deterministic.
+  temperature: 0.0
+
+# Agent-specific settings
+agents:
+  analysis_agent:
+    model: ${llm.default_model}
+    max_tokens: 4096
+  refactoring_agent:
+    model: "claude-3-opus-20240229" # Override with a powerful model for coding.
+    max_tokens: 4096
+  testing_agent:
+    model: ${llm.default_model}
+    max_tokens: 2048
+
+# Logging configuration
+logging:
+  level: INFO
