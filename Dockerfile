@@ -29,7 +29,7 @@ RUN pip install poetry \
 
 # 5. Copy Application Code
 # Copy the rest of the application source code into the container.
-COPY ./api /app/api
+COPY ./src/api /app/api
 
 # 6. Expose Port
 # The port that the container will listen on.
