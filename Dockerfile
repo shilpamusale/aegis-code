@@ -15,7 +15,6 @@ WORKDIR /app
 COPY pyproject.toml poetry.lock* LICENSE* ./
 
 # Install poetry and then the project dependencies.
-# This command is simplified to be more robust and avoid group errors.
 RUN pip install poetry \
     && poetry config virtualenvs.in-project true \
     && poetry install --no-root
@@ -25,8 +24,10 @@ RUN pip install poetry \
 COPY ./src/api /app/api
 
 # 6. Expose Port
-EXPOSE 8000
+# This is just metadata. The actual port is set in the CMD line.
+EXPOSE 8080
 
 # 7. Define Run Command
 # The command to run when the container starts.
-CMD ["poetry", "run", "uvicorn", "api.server:app", "--host", "0.0.0.0", "--port", "8000"]
+# We now use the $PORT environment variable provided by Cloud Run.
+CMD ["poetry", "run", "uvicorn", "api.server:app", "--host", "0.0.0.0", "--port", "$PORT"]
