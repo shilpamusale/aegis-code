@@ -15,10 +15,10 @@ WORKDIR /app
 COPY pyproject.toml poetry.lock* LICENSE* ./
 
 # Install poetry and then the project dependencies.
-# The --no-dev flag is corrected to the modern --without dev.
+# This command is simplified to be more robust and avoid group errors.
 RUN pip install poetry \
     && poetry config virtualenvs.in-project true \
-    && poetry install --no-root --without dev
+    && poetry install --no-root
 
 # 5. Copy Application Code
 # This path is corrected to look inside the 'src' directory.
