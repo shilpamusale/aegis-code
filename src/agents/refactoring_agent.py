@@ -112,11 +112,3 @@ class RefactoringAgent:
         os.remove(test_file_path)
         print(f"   Removed '{test_file_path}'.")
         print("\n--- RefactoringAgent: Dummy Test Complete ---")
-
-
-# ==============================================================================
-# Local Test Block
-# ==============================================================================
-if __name__ == "__main__":
-    refactoring_agent = RefactoringAgent()
-    refactoring_agent.run_dummy_test()
