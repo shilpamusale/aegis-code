@@ -12,13 +12,13 @@ WORKDIR /app
 
 # 4. Install Dependencies
 # Copy all necessary files for dependency installation.
-# This now includes the LICENSE file to satisfy poetry.
 COPY pyproject.toml poetry.lock* LICENSE* ./
 
 # Install poetry and then the project dependencies.
+# The --no-dev flag is corrected to the modern --without dev.
 RUN pip install poetry \
     && poetry config virtualenvs.in-project true \
-    && poetry install --no-root --no-dev
+    && poetry install --no-root --without dev
 
 # 5. Copy Application Code
 # This path is corrected to look inside the 'src' directory.
