@@ -28,6 +28,5 @@ COPY ./src/api /app/api
 EXPOSE 8080
 
 # 7. Define Run Command
-# The command to run when the container starts.
-# We now use the $PORT environment variable provided by Cloud Run.
-CMD ["poetry", "run", "uvicorn", "api.server:app", "--host", "0.0.0.0", "--port", "$PORT"]
+# This now uses the "shell form" of CMD to correctly expand the $PORT variable.
+CMD poetry run uvicorn api.server:app --host 0.0.0.0 --port $PORT
