@@ -1,0 +1,24 @@
+# In .github/workflows/pr_review_trigger.yml
+
+name: "Trigger PR Review"
+
+# This section defines the trigger. It will only run when a new
+# comment is created on a pull request (which is an "issue" in this context).
+# This corrects the syntax error and stops the workflow from running on every push.
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  trigger-review:
+    name: "Check for trigger phrase"
+    # This job only runs if the comment text contains "@aegis-code review"
+    if: contains(github.event.comment.body, '@aegis-code review')
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Acknowledge review request"
+        run: |
+          echo "PR review has been requested on issue/PR #${{ github.event.issue.number }}."
+          echo "The workflow to call the API will be fully implemented in Week 3."
+          # In the future, this step will use curl or a dedicated action
+          # to send a POST request to your deployed Cloud Run service.
